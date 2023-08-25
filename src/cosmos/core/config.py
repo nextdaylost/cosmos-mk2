@@ -3,6 +3,7 @@
 
 from typing import Literal, Optional
 
+import pydantic
 import pydantic_settings
 
 
@@ -24,6 +25,7 @@ class Settings(pydantic_settings.BaseSettings):
     """Root application settings.
 
     Attributes:
+        cors_origins: A JSON-formatted array of strings containing trusted URLs.
         env: The operating environment of the application.
         openapi: An instance of OpenApiInfo.
     """
@@ -33,6 +35,7 @@ class Settings(pydantic_settings.BaseSettings):
         env_nested_delimiter="__",
     )
 
+    cors_origins: list[pydantic.AnyHttpUrl] = []
     env: Literal["dev", "prod"] = "dev"
     openapi: OpenApiInfo = OpenApiInfo()
 
