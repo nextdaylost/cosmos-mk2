@@ -1,0 +1,5 @@
+[flake8]
+docstring-convention = google
+exclude = .git,.pytest_cache,.venv,__init__.py,__pycache__,dist,tests
+extend-ignore = E203
+max-line-length = 88

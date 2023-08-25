@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "cosmos"
+version = "0.1.0"
+description = "A system for processing, storing, and sharing data"
+authors = ["Brian McGowan <brian@nextdaylost.com>"]
+readme = "README.md"
+homepage = "https://github.com/nextdaylost/cosmos"
+repository = "https://github.com/nextdaylost/cosmos"
+documentation = "https://github.com/nextdaylost/cosmos"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/nextdaylost/cosmos/issues"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+coverage = "^7.3.0"
+flake8 = "^6.1.0"
+flake8-docstrings = "^1.7.0"
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ["py311"]
