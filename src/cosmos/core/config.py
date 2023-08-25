@@ -35,6 +35,7 @@ class Settings(pydantic_settings.BaseSettings):
         cors_origins: A JSON-formatted array of strings containing trusted URLs.
         env: The operating environment of the application.
         openapi: An instance of OpenApiInfo.
+        sqlalchemy_uri: A Postgres DSN.
     """
 
     model_config = pydantic_settings.SettingsConfigDict(
@@ -46,6 +47,9 @@ class Settings(pydantic_settings.BaseSettings):
     cors_origins: list[pydantic.AnyHttpUrl] = []
     env: Literal["dev", "prod"] = "dev"
     openapi: OpenApiInfo = OpenApiInfo()
+    sqlalchemy_uri: pydantic.PostgresDsn | Literal[
+        "sqlite:///cosmos.db"
+    ] = "sqlite:///cosmos.db"
 
 
 settings = Settings()

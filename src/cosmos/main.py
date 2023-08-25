@@ -7,6 +7,7 @@ from fastapi.middleware import cors
 from cosmos import metadata
 from cosmos.api.v1 import api
 from cosmos.core import config
+from cosmos.db import init
 from cosmos.utils.endpoints import ping
 
 
@@ -23,6 +24,9 @@ def main() -> fastapi.FastAPI:
         title=config.settings.openapi.title,
         version=metadata.__version__,
     )
+
+    if config.settings.env == "dev":
+        init.initialize_db()
 
     if config.settings.cors_origins:
         app.add_middleware(
