@@ -73,3 +73,10 @@ flake8
 > ```shell
 > black src/cosmos/
 > ```
+
+### Building
+Build source and wheel distributions:
+
+```shell
+poetry build
+```
