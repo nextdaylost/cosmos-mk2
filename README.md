@@ -59,3 +59,17 @@ coverage html
 # As machine-readable XML
 coverage xml
 ```
+
+### Linting
+
+Run the linter:
+
+```shell
+flake8
+```
+
+> Code formatting errors can usually be fixed by running `black`:
+>
+> ```shell
+> black src/cosmos/
+> ```
