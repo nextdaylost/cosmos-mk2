@@ -16,6 +16,7 @@ def main() -> fastapi.FastAPI:
     """
     app = fastapi.FastAPI(
         description=config.settings.openapi.description,
+        openapi_url=f"{config.settings.api_prefix}/openapi.json",
         summary=config.settings.openapi.summary,
         title=config.settings.openapi.title,
         version=metadata.__version__,
@@ -29,5 +30,9 @@ def main() -> fastapi.FastAPI:
             allow_methods=["*"],
             allow_origins=[str(origin) for origin in config.settings.cors_origins],
         )
+
+    router = fastapi.APIRouter(prefix=config.settings.api_prefix)
+
+    app.include_router(router)
 
     return app
