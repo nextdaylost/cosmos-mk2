@@ -5,6 +5,7 @@ import fastapi
 from fastapi.middleware import cors
 
 from cosmos import metadata
+from cosmos.api.v1 import api
 from cosmos.core import config
 from cosmos.utils.endpoints import ping
 
@@ -34,6 +35,7 @@ def main() -> fastapi.FastAPI:
 
     router = fastapi.APIRouter(prefix=config.settings.api_prefix)
 
+    router.include_router(api.router)
     router.include_router(ping.router)
 
     app.include_router(router)
